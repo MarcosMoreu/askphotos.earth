@@ -1,1 +1,2 @@
-# askphotos.earth Ground-truth Data Generator-beta
+# askphotos.earth Ground-truth Data Generator
+Beta
