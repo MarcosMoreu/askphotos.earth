@@ -11,7 +11,7 @@ You need the processing script and a list of links to begin.
 
 1. **Create a Folder:** Create a new folder on your computer named e.g. `AskPhotos`.
 2. **Save the Script:** Save the `generate_map_cli.py` file inside that folder. 
-https://github.com/MarcosMoreu/GTDGenerator-askphotosdotearth/blob/main/generate_map_cli.py
+https://github.com/MarcosMoreu/askphotos.earth/blob/main/generate_map_cli.py
 3. **Prepare Your Links:** Create a text file in the same folder named `links.txt`. Paste the Google Photos shared albums URLs inside it. The script will exclude any text inside the file except these URLs. For instance, you can upload a exported WhatsApp group chat and the GTD Generator will find the Google Photos URLs only.   
 
 ---
