@@ -1,4 +1,4 @@
-# askphotos.earth Ground-truth Data Generator (CLI)
+# askphotos.earth Ground-Truth Data Generator (CLI)
 
 ## 🛠 Step 1: Install Python
 Before running the script, you must have Python installed.
@@ -12,7 +12,7 @@ You need the processing script and a list of links to begin.
 1. **Create a Folder:** Create a new folder on your computer named e.g. `AskPhotos`.
 2. **Save the Script:** Save the `generate_map_cli.py` file inside that folder. 
 https://github.com/MarcosMoreu/askphotos.earth/blob/main/generate_map_cli.py
-3. **Prepare Your Links:** Create a text file in the same folder named `links.txt`. Paste the Google Photos shared albums URLs inside it. The script will exclude any text inside the file except these URLs. For instance, you can upload a exported WhatsApp group chat and the GTD Generator will find the Google Photos URLs only.   
+3. **Prepare Your Links:** Create a csv or txt file in the same folder named `links.csv` or `links.txt`. The script will exclude any text inside the file except these URLs. For instance, you can upload a exported WhatsApp group chat and the GTD Generator will find the Google Photos URLs only.   
 
 ---
 
@@ -35,22 +35,24 @@ Basic Map Generation (Fastest)
 This scans your links and creates a map file without downloading photos or using AI.
 
 ```bash
-python3 generate_map_cli.py --file links.txt
+python3 generate_map_cli.py --file links.csv
 ```
 Full Data Generation (Download + AI)
 This compresses/saves images locally and uses AI to describe each photo. Create a key at: https://aistudio.google.com/api-keys. Other AI providers available soon.
 
 ```bash
-python3 generate_map_cli.py --file links.txt --download --quality 70 --key YOUR_GOOGLE_AI_KEY
+python3 generate_map_cli.py --file links.csv --download --quality 70 --key YOUR_GOOGLE_AI_KEY
 ```
 📝 Command Options
 
-1. download	Include this flag if you want to save local compressed copies of the photos. ❗ Keep in mind the local storage available when activating this option.
-2. quality	Set the image compression quality from 1-100 (70 is recommended). 
-3. key	Your Google Gemini API Key. Get one for free at AI Studio. ❗ Keep in mind the costs when activating this option
+1. download:	Include this flag if you want to save local compressed copies of the photos. ❗ Keep in mind the local storage available when activating this option.
+2. quality:	Set the image compression quality from 1-100 (70 is recommended). 
+3. key:	Your Google Gemini API Key. Get one for free at AI Studio. ❗ Keep in mind the costs when activating this option.
 
 ## 🗺 Step 5: Visualize
 Once the process is complete, a photos.geojson file will appear in your folder.
 
-Go to https://askphotos.earth/pages/viewer. Drag and drop the photos.geojson file onto the map to see your journey!
+Go to https://askphotos.earth/pages/viewer and drag and drop the photos.geojson file onto the map. 
+
+For advanced GIS analysis and visualisation you can drag and drop the photos.geojson file onto QGIS/ArcGIS or onto AI-powered geospatial tools like Google Earth AI or CARTO AI Agents.
 
