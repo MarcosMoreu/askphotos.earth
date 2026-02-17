@@ -3,6 +3,7 @@ import requests
 import re
 import os
 import json
+import csv
 import exifread
 import time
 import random
@@ -35,7 +36,7 @@ def get_metadata(content):
 
 def main():
     parser = argparse.ArgumentParser(description="askphotos.earth GTD Generator (CLI Version)")
-    parser.add_argument("--file", required=True, help="Path to .txt file with Google Photos URLs")
+    parser.add_argument("--file", required=True, help="Path to .txt or .csv file with Google Photos URLs")
     parser.add_argument("--out", default=".", help="Output directory (default: current)")
     parser.add_argument("--download", action="store_true", help="Compress and download images")
     parser.add_argument("--quality", type=int, default=70, help="Image quality (1-100)")
@@ -47,9 +48,20 @@ def main():
     photo_dir = os.path.join(args.out, "photos")
     if args.download and not os.path.exists(photo_dir): os.makedirs(photo_dir)
 
-    # Load URLs from text file
-    with open(args.file, "r", encoding="utf-8") as f:
-        urls = re.findall(r'https?://photos\.app\.goo\.gl/[^\s\n\r]+', f.read())
+    # Load URLs from file (.txt or .csv)
+    ext = os.path.splitext(args.file)[1].lower()
+    if ext == ".csv":
+        urls = []
+        with open(args.file, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                for cell in row:
+                    found = re.findall(r'https?://photos\.app\.goo\.gl/[^\s,"]+', cell)
+                    urls.extend(found)
+        urls = list(dict.fromkeys(urls))  # deduplicate preserving order
+    else:
+        with open(args.file, "r", encoding="utf-8") as f:
+            urls = re.findall(r'https?://photos\.app\.goo\.gl/[^\s\n\r]+', f.read())
 
     client = genai.Client(api_key=args.key) if args.key else None
     features = []
