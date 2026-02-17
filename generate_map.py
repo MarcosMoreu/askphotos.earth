@@ -6,6 +6,7 @@ import requests
 import re
 import os
 import json
+import csv
 import exifread
 import time
 import random
@@ -41,7 +42,7 @@ class PhotoMapperApp(ctk.CTk):
         self.frame_top.pack(pady=10, fill="x", padx=50)
         
         # URL File
-        self.btn_upload = ctk.CTkButton(self.frame_top, text="1. Upload the .txt file with the photo album's URLs", command=self.upload_file)
+        self.btn_upload = ctk.CTkButton(self.frame_top, text="1. Upload the file (csv or txt) with the photo album's URLs", command=self.upload_file)
         self.btn_upload.grid(row=0, column=0, padx=10, pady=10)
         self.lbl_file = ctk.CTkLabel(self.frame_top, text="No file selected", text_color="gray")
         self.lbl_file.grid(row=0, column=1, padx=10, sticky="w")
@@ -111,11 +112,30 @@ class PhotoMapperApp(ctk.CTk):
         else: self.api_container.pack_forget()
 
     def upload_file(self):
-        f_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        f_path = filedialog.askopenfilename(filetypes=[
+            ("Supported files", "*.txt *.csv"),
+            ("Text files", "*.txt"),
+            ("CSV files", "*.csv")
+        ])
         if f_path:
-            with open(f_path, "r", encoding="utf-8") as f:
-                self.found_urls = re.findall(r'https?://photos\.app\.goo\.gl/[^\s\n\r]+', f.read())
-                self.lbl_file.configure(text=f"Found {len(self.found_urls)} URLs", text_color="white")
+            ext = os.path.splitext(f_path)[1].lower()
+            if ext == ".csv":
+                self.found_urls = self._extract_urls_from_csv(f_path)
+            else:
+                with open(f_path, "r", encoding="utf-8") as f:
+                    self.found_urls = re.findall(r'https?://photos\.app\.goo\.gl/[^\s\n\r]+', f.read())
+            self.lbl_file.configure(text=f"Found {len(self.found_urls)} URLs", text_color="white")
+
+    def _extract_urls_from_csv(self, csv_path):
+        """Scan every cell in a CSV file for Google Photos album URLs."""
+        urls = []
+        with open(csv_path, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                for cell in row:
+                    found = re.findall(r'https?://photos\.app\.goo\.gl/[^\s,"]+', cell)
+                    urls.extend(found)
+        return list(dict.fromkeys(urls))  # deduplicate while preserving order
 
     def select_directory(self):
         d_path = filedialog.askdirectory()
@@ -132,7 +152,7 @@ class PhotoMapperApp(ctk.CTk):
 
     def start_thread(self):
         if not self.found_urls:
-            messagebox.showwarning("Warning", "Please upload a .txt file first.")
+            messagebox.showwarning("Warning", "Please upload a .txt or .csv file first.")
             return
         self.is_running = True
         self.btn_run.configure(state="disabled")
