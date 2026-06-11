@@ -32,7 +32,7 @@ pip install Pillow requests exifread google-genai
 In your terminal, navigate to your AskPhotos folder and run one of the following commands (change python3 version if different):
 
 Basic Map Generation (Fastest)
-This scans your links and creates a map file without downloading photos or using AI.
+This scans your links, extracts image data and metadata from the album webpages shared with you, and creates a map file, without downloading photos or using AI.
 
 ```bash
 python3 generate_map_cli.py --file links.csv
