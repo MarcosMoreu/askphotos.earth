@@ -243,7 +243,7 @@ class PhotoMapperApp(ctk.CTk):
                             try:
                                 self.update_status(f"Album {album_num} — Analysing Image {geo_count} Semantics...")
                                 p = types.Part.from_bytes(data=content, mime_type="image/jpeg")
-                                ai_out = client.models.generate_content(model="gemini-2.0-flash", contents=["Short description.", p])
+                                ai_out = client.models.generate_content(model="gemini-3.1-flash-lite", contents=["Short description.", p])
                                 desc = ai_out.text.strip()
                             except: desc = "AI Analysis Error"
 
