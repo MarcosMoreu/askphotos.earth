@@ -25,7 +25,7 @@ Open your terminal and run the following command to install the necessary tools:
 4. google-genai (Optional): Connects to Google's Gemini AI to generate semantic descriptions.
 
 ```bash
-pip install Pillow requests exifread google-genai
+pip install Pillow requests exifread pillow-heif google-genai
 ```
 
 ## 🚀 Step 4: Run the Generator
