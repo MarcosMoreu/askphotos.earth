@@ -49,10 +49,7 @@ python3 generate_map_cli.py --file links.csv --download --quality 70 --key YOUR_
 2. quality:	Set the image compression quality from 1-100 (70 is recommended). 
 3. key:	Your Google Gemini API Key. Get one for free at AI Studio. ❗ Keep in mind the costs when activating this option.
 
-## 🗺 Step 5: Visualize
-Once the process is complete, a photos.geojson file will appear in your folder.
+## 🗺 Step 5: View and analyse the ground-truth data
+Once the process is complete, a photos.geojson file will appear in your folder. Drag & drop the file in askphotos.earth Viewer to view the map data, and then analyse it using QGIS/ArcGIS or AI-powered geospatial analysis tools such as Google Earth AI or CARTO AI Agents.
 
-Go to https://askphotos.earth/pages/viewer and drag and drop the photos.geojson file onto the map. 
-
-For advanced GIS analysis and visualisation you can drag and drop the photos.geojson file onto QGIS/ArcGIS or onto AI-powered geospatial tools like Google Earth AI or CARTO AI Agents.
 
