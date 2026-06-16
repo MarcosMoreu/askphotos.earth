@@ -32,12 +32,14 @@ pip install Pillow requests exifread pillow-heif google-genai
 In your terminal, navigate to your AskPhotos folder and run one of the following commands (change python3 version if different):
 
 **Basic Map Generation (Fastest)**
+
 This scans your links, extracts image data and metadata from the album webpages shared with you, and creates a map file, without downloading photos or using AI.
 
 ```bash
 python3 generate_map_cli.py --file links.csv
 ```
 **Full Data Generation (Download + AI)**
+
 This compresses/saves images locally and uses AI to describe each photo. Create a key at: https://aistudio.google.com/api-keys. Other AI providers available soon.
 
 ```bash
