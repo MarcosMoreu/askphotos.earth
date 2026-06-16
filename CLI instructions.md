@@ -52,6 +52,6 @@ python3 generate_map_cli.py --file links.csv --download --quality 70 --key YOUR_
 3. key:	Your Google Gemini API Key. Get one for free at AI Studio. ❗ Keep in mind the costs when activating this option.
 
 ## 🗺 Step 5: View and analyse the ground-truth data
-Once the process is complete, a photos.geojson file will appear in your folder. Drag & drop the file in [askphotos.earth Map Viewer](https://askphotos.earth/pages/viewer) to visualise the map data, or analyse it using QGIS/ArcGIS or AI-powered geospatial analysis tools such as Google Earth AI or CARTO AI Agents.
+Once the process is complete, a photos.geojson file will appear in your folder. Drag & drop the file in [askphotos.earth Map Viewer](https://askphotos.earth/pages/viewer) to visualise the map data, or analyse it using QGIS/ArcGIS or AI-powered geospatial analysis tools such as Google Earth AI or CARTO.
 
 
