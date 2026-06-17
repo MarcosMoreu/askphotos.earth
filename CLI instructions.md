@@ -38,13 +38,17 @@ This scans your links, extracts image data and metadata from the album webpages 
 ```bash
 python3 generate_map_cli.py --file links.csv
 ```
-**Full Data Generation (Download + AI)**
+**Full Data Generation (Download + AI-generated descriptions)**
 
-This compresses/saves images locally and uses AI to describe each photo. Create a key at: https://aistudio.google.com/api-keys. Other AI providers available soon.
+This compresses/saves images locally and uses AI to create a short description each photo and include it in the geojson as an attribute. Create a key at: https://aistudio.google.com/api-keys. Other AI providers available soon.
 
 ```bash
 python3 generate_map_cli.py --file links.csv --download --quality 70 --key YOUR_GOOGLE_AI_KEY
 ```
+**Full Data Generation + Confidence** (under development)🚧
+
+This will generate a confidence level based on your prompt/ground-truth data needs.
+
 📝 Command Options
 
 1. download:	Include this flag if you want to save local compressed copies of the photos. ❗ Keep in mind the local storage available when activating this option.
