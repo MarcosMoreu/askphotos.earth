@@ -31,14 +31,14 @@ pip install Pillow requests exifread pillow-heif google-genai
 ## 🚀 Step 4: Run the Generator
 In your terminal, navigate to your AskPhotos folder and run one of the following commands (change python3 version if different):
 
-**Basic Map Generation (Fastest)**
+**Basic**
 
-This scans your links, extracts image data and metadata from the album webpages shared with you, and creates a map file, without downloading photos or using AI.
+This scans your links, extracts image data and metadata from the album webpages shared with you, and creates a geojson file, without downloading photos or using AI to generated short descriptions.
 
 ```bash
 python3 generate_map_cli.py --file links.csv
 ```
-**Full Data Generation (Download + AI-generated descriptions)**
+**Basic + Download + AI-generated descriptions**
 
 This compresses/saves images locally and uses AI to create a short description of each photo and include it in the geojson as an attribute. 
 
@@ -49,7 +49,7 @@ python3 generate_map_cli.py --file links.csv --download --quality 70 --key YOUR_
 ```
 -*Option 2 - Lightweight, open-source AI models*: (under development)🚧
 
-**Full Data Generation + Confidence** (under development)🚧
+**Basic + Download + AI-generated descriptions + Confidence** (under development)🚧
 
 This will generate a confidence level based on your prompt/ground-truth data needs.
 
