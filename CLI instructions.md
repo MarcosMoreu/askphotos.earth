@@ -40,11 +40,15 @@ python3 generate_map_cli.py --file links.csv
 ```
 **Full Data Generation (Download + AI-generated descriptions)**
 
-This compresses/saves images locally and uses AI to create a short description each photo and include it in the geojson as an attribute. Create a key at: https://aistudio.google.com/api-keys. Other AI providers available soon.
+This compresses/saves images locally and uses AI to create a short description of each photo and include it in the geojson as an attribute. 
+
+-*Option 1 - Google Gemini:* Create a key at https://aistudio.google.com/api-keys. 
 
 ```bash
 python3 generate_map_cli.py --file links.csv --download --quality 70 --key YOUR_GOOGLE_AI_KEY
 ```
+-*Option 2 - Lightweight, open-source AI models*: (under development)🚧
+
 **Full Data Generation + Confidence** (under development)🚧
 
 This will generate a confidence level based on your prompt/ground-truth data needs.
@@ -56,6 +60,6 @@ This will generate a confidence level based on your prompt/ground-truth data nee
 3. key:	Your Google Gemini API Key. Get one for free at AI Studio. ❗ Keep in mind the costs when activating this option.
 
 ## 🗺 Step 5: View and analyse the ground-truth data
-Once the process is complete, a photos.geojson file will appear in your folder. Drag & drop the file in [askphotos.earth Map Viewer](https://askphotos.earth/pages/viewer) to visualise the map data, or analyse it using QGIS/ArcGIS or AI-powered geospatial analysis tools such as Google Earth AI or CARTO.
+Once the process is complete, a photos.geojson file will appear in your folder. Drag & drop the file in [askphotos.earth Map Viewer](https://askphotos.earth/pages/viewer) to visualise the map data, or analyse it using QGIS/ArcGIS or AI-powered geospatial analysis tools.
 
 
