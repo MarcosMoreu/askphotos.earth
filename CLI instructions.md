@@ -12,7 +12,7 @@ You need the processing script and a list of links to begin.
 1. **Create a Folder:** Create a new folder on your computer named e.g. `AskPhotos`.
 2. **Save the Script:** Save the `generate_map_cli.py` file inside that folder. 
 https://github.com/MarcosMoreu/askphotos.earth/blob/main/generate_map_cli.py
-3. **Prepare Your Links:** Create a csv or txt file in the same folder named `links.csv` or `links.txt`. The script will exclude any text inside the file except these URLs. For instance, you can upload a exported WhatsApp group chat and the GTD Generator will find the Google Photos URLs only.   
+3. **Prepare Your Links:** Create a csv or txt file in the same folder named `links.csv` or `links.txt`. The script will exclude any text inside the file except these URLs. For instance, you can upload a form responses in CSV format or a exported WhatsApp group chat in TXT format, and the GTD Generator will find the Google Photos URLs only.   
 
 ---
 
@@ -33,7 +33,7 @@ In your terminal, navigate to your AskPhotos folder and run one of the following
 
 **Basic**
 
-This scans your links, extracts image data and metadata from the album webpages shared with you, and creates a geojson file, without downloading photos or using AI to generated short descriptions.
+This scans your links in the CSV or TXT file (change to .txt below if your file is in TXT format), extracts image data and metadata from the album webpages shared with you, and creates a geojson file, without downloading photos or using AI to generated short descriptions.
 
 ```bash
 python3 generate_map_cli.py --file links.csv
